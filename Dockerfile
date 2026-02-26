@@ -1,9 +1,9 @@
 FROM ubuntu:latest AS build
-ARG VERSION=0.11
+ARG VERSION=v0.11
 RUN apt update -y && apt -y install build-essential btrfs-progs markdown tzdata git gcc pkg-config systemd && rm -rf /var/lib/apt/lists/*
 RUN git clone https://github.com/Zygo/bees.git /usr/src/bees
 WORKDIR /usr/src/bees
-RUN git checkout v${VERSION}
+RUN git checkout ${VERSION}
 RUN make all
 
 FROM alpine:latest
