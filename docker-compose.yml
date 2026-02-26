@@ -12,5 +12,5 @@ services:
       - TZ=Europe/Rome
       - HASH_TABLE=/mnt/.beeshome/beeshash.dat
       - HASH_TABLE_SIZE=4G
-      - OPTIONS=-a -c 1
       - CACHEDEV=cachedev_1
+    command: -a -c 1
