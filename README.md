@@ -1,5 +1,5 @@
 # theredcyclops/bees-docker
-## Based on the work by (deatheibon)[https://github.com/deatheibon]
+## Based on the work by [deatheibon](https://github.com/deatheibon)
 
 Dockerized Best-Effort Extent-Same btrfs deduplication agent.
 https://github.com/Zygo/bees
