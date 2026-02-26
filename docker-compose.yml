@@ -1,4 +1,3 @@
-version: '3.3'
 services:
   beesd:
     container_name: beesd
