@@ -1,9 +1,10 @@
-FROM alpine:latest AS build
-ADD docker-entrypoint.sh /
-RUN apk update && apk add --no-cache build-base btrfs-progs markdown tzdata git gcc pkgconfig linux-headers
+FROM ubuntu:latest AS build
+ARG VERSION=0.11
+RUN apt update -y && apt -y install build-essential btrfs-progs markdown tzdata git gcc pkg-config systemd && rm -rf /var/lib/apt/lists/*
 RUN git clone https://github.com/Zygo/bees.git /usr/src/bees
-RUN cd /usr/src/bees && make
-RUN rm -rf /usr/src/bees
+WORKDIR /usr/src/bees
+RUN git checkout v${VERSION}
+RUN make all
 
 FROM alpine:latest
 ENV TZ=Europe/Rome
