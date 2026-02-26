@@ -1,4 +1,5 @@
-# rylos/bees-docker
+# theredcyclops/bees-docker
+## Based on the work by (deatheibon)[https://github.com/deatheibon]
 
 Dockerized Best-Effort Extent-Same btrfs deduplication agent.
 https://github.com/Zygo/bees
@@ -26,15 +27,17 @@ docker run -ti --privileged -e HASH_TABLE=/mnt/.beeshome/beeshash.dat -e HASH_TA
 services:
   beesd:
     container_name: beesd
-    image: rylos/bees-docker
     privileged: true
     restart: unless-stopped
     hostname: beesd
+    image: theredcyclops/beesd:latest
     environment:
       - TZ=Europe/Rome
       - HASH_TABLE=/mnt/.beeshome/beeshash.dat
       - HASH_TABLE_SIZE=4G
-      - OPTIONS=-a
+      - CACHEDEV=cachedev_1
+    command: -a -c 1
+
     volumes:
       - /mnt:/mnt
 ```
